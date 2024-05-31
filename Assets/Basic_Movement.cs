@@ -5,94 +5,116 @@ using TMPro;
 
 public class Basic_Movement : MonoBehaviour
 {
-    [Header("Movement")]
-    //Freely able to change movement speed in the inspector.
-    public float MovementSpeed;
+    public CharacterController characterController;  // Reference to the CharacterController component
 
-    //Decreases acceleration and momentuem, this allows us to move more naturally. 
-    public float groundDrag;
+    [Header("Movement")]
+    // Normal movement speed
+    public float speed = 12.0f;  
+    // Sprint movement speed
+    public float sprintSpeed = 20.0f;  
+    // Gravity value, increased to make falling faster
+    public float gravity = -20f;  
+    // Jump height, decreased to reduce airtime
+    public float jumpHeight = 5f;  
 
     [Header("Ground Check")]
-    //Uses the Player's Height
-    public float PlayerHeight;
-    //Uses Raycast to Check whether we are on the ground
-    public LayerMask GroundCheck;
-    //True or False condition when we are either on/off the ground. 
-    bool IsGrounded;
+    // Transform for ground check position
+    public Transform groundCheck;
+    // Radius for ground check sphere
+    public float groundDistance = 0.4f;  
+    // Layer mask to specify what counts as ground
+    public LayerMask groundMask;
 
-    [Header("Speed Checker")]
-    public TMP_Text SpeedVarText;
+    // Transform of the camera to determine facing direction
+    public Transform cameraTransform;
 
-    //Transforming the Orientation of an object.
-    public Transform orientation;
+    // Player's velocity
+    private Vector3 velocity;  
+    // Whether the player is grounded
+    private bool isGrounded;
 
-    float HorizontalInput;
-    float VerticalInput;
+    // Time after leaving ground where a jump is still possible
+    private float coyoteTime = 0.2f;
+    // Counter for coyote time
+    private float coyoteTimeCounter;
 
-    Vector3 MovementDirection;
+    // Time window to buffer jump input
+    private float jumpBufferTime = 0.2f;
+    // Counter for jump buffer
+    private float jumpBufferCounter; 
 
-    //using the Ridgidbody of an Object.
-    Rigidbody RB;
-
-    private void Start()
+    void Update()
     {
-        RB = GetComponent<Rigidbody>();
-        //To prevent the player from falling over. 
-        RB.freezeRotation = true;
+        // Check if the player is grounded by casting a sphere at the groundCheck position
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-    }
-
-    //Will Constantly check for movement.
-    private void Update()
-    {
-        SpeedVarText.SetText("Speed: " + MovementSpeed);
-
-        PlayerInput();
-        SpeedControl();
-
-        //Consistently Checking for the Ground.
-        IsGrounded = Physics.Raycast(transform.position + new Vector3(0,0.05f,0),Vector3.down, PlayerHeight * 0.5f + 0.3f, GroundCheck);
-
-        //Ground and Air Drag.
-        if (IsGrounded == true)
-            RB.drag = groundDrag;
-        else 
-            RB.drag = 0;
-    }
-
-    //Used to check physics
-    private void FixedUpdate()
-    {
-        MovePlayer();
-    }
-
-    private void PlayerInput()
-    {
-        HorizontalInput = Input.GetAxisRaw("Horizontal");
-        VerticalInput = Input.GetAxisRaw("Vertical");
-
-    }
-
-    private void MovePlayer()
-    {
-        //Move wherever you look.
-        //The use of .Forward and .Right is to give direction to our orientation, this is also then multiplied by our inputs for movement. 
-        MovementDirection = orientation.forward * VerticalInput + orientation.right * HorizontalInput;
-
-        //Adds force to movement.
-        RB.AddForce(10f * MovementSpeed * MovementDirection.normalized, ForceMode.Force);
-    }
-
-    private void SpeedControl()
-    {
-        Vector3 flatVel = new Vector3(RB.velocity.x, 0f, RB.velocity.z);
-
-        //limit velocity if needed.
-        if (flatVel.magnitude > MovementSpeed)
+        // Reset coyote time counter if grounded
+        if (isGrounded)
         {
-            Vector3 limitedVel = flatVel.normalized * MovementSpeed;
-            //Controls and Limits Velocity on the X,Y,Z Axis
-            RB.velocity = new Vector3(limitedVel.x, RB.velocity.y, limitedVel.z);
+            coyoteTimeCounter = coyoteTime;
+        }
+        else
+        {
+            coyoteTimeCounter -= Time.deltaTime;
+        }
+
+        // Handle jump buffer input
+        if (Input.GetButtonDown("Jump"))
+        {
+            jumpBufferCounter = jumpBufferTime;
+        }
+        else
+        {
+            jumpBufferCounter -= Time.deltaTime;
+        }
+
+        // Get player input for horizontal and vertical movement
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
+
+        // Calculate movement direction based on input and the direction the player is facing
+        Vector3 movement = cameraTransform.right * x + cameraTransform.forward * z;
+
+        // Remove any upward/downward component of the movement direction
+        movement.y = 0f;
+
+        // Move the character using the CharacterController
+        if (Input.GetKey(KeyCode.LeftShift))  // Check if the sprint key is held down
+        {
+            // Move with sprint speed
+            characterController.Move(movement * sprintSpeed * Time.deltaTime);  
+        }
+        else
+        {
+            // Move with normal speed
+            characterController.Move(movement * speed * Time.deltaTime);  
+        }
+
+        // Apply gravity to the velocity
+        velocity.y += gravity * Time.deltaTime;
+
+        // Additional downward force when falling to make the jump less floaty
+        if (velocity.y < 0)
+        {
+            // Apply extra downward force
+            velocity.y += gravity * 1.5f * Time.deltaTime;  
+        }
+
+        // Move the character downwards due to gravity
+        characterController.Move(velocity * Time.deltaTime);
+
+        // Handle jumping with coyote time and jump buffer
+        if (jumpBufferCounter > 0 && coyoteTimeCounter > 0)
+        {
+            // Calculate the jump velocity
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            // Reset jump buffer counter
+            jumpBufferCounter = 0;  
+        }
+
+        if ((characterController.collisionFlags & CollisionFlags.Above) != 0)
+        {
+            velocity.y = -2f;
         }
     }
 }
