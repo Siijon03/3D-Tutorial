@@ -42,7 +42,7 @@ public class PlayerCamera : MonoBehaviour
         //Eulars Returns a rotation that rotates z degrees around the z axis, x degrees around the x axis, and y degrees around the y axis; applied in that order.
         //Eular Angles are important because they are used to describe the orientation of the reference frame relative to another reference frame.
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-        orientation.rotation = Quaternion.Euler(0,yRotation, 0);
+        orientation.rotation = Quaternion.Euler(0, yRotation, 0);
 
     }
 }

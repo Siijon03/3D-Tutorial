@@ -9,19 +9,19 @@ public class Basic_Movement : MonoBehaviour
 
     [Header("Movement")]
     // Normal movement speed
-    public float speed = 12.0f;  
+    public float speed = 12.0f;
     // Sprint movement speed
-    public float sprintSpeed = 20.0f;  
+    public float sprintSpeed = 20.0f;
     // Gravity value, increased to make falling faster
-    public float gravity = -20f;  
+    public float gravity = -20f;
     // Jump height, decreased to reduce airtime
-    public float jumpHeight = 5f;  
+    public float jumpHeight = 5f;
 
     [Header("Ground Check")]
     // Transform for ground check position
     public Transform groundCheck;
     // Radius for ground check sphere
-    public float groundDistance = 0.4f;  
+    public float groundDistance = 0.4f;
     // Layer mask to specify what counts as ground
     public LayerMask groundMask;
 
@@ -29,7 +29,7 @@ public class Basic_Movement : MonoBehaviour
     public Transform cameraTransform;
 
     // Player's velocity
-    private Vector3 velocity;  
+    private Vector3 velocity;
     // Whether the player is grounded
     private bool isGrounded;
 
@@ -41,7 +41,7 @@ public class Basic_Movement : MonoBehaviour
     // Time window to buffer jump input
     private float jumpBufferTime = 0.2f;
     // Counter for jump buffer
-    private float jumpBufferCounter; 
+    private float jumpBufferCounter;
 
     void Update()
     {
@@ -82,12 +82,12 @@ public class Basic_Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))  // Check if the sprint key is held down
         {
             // Move with sprint speed
-            characterController.Move(movement * sprintSpeed * Time.deltaTime);  
+            characterController.Move(movement * sprintSpeed * Time.deltaTime);
         }
         else
         {
             // Move with normal speed
-            characterController.Move(movement * speed * Time.deltaTime);  
+            characterController.Move(movement * speed * Time.deltaTime);
         }
 
         // Apply gravity to the velocity
@@ -97,7 +97,7 @@ public class Basic_Movement : MonoBehaviour
         if (velocity.y < 0)
         {
             // Apply extra downward force
-            velocity.y += gravity * 1.5f * Time.deltaTime;  
+            velocity.y += gravity * 1.5f * Time.deltaTime;
         }
 
         // Move the character downwards due to gravity
@@ -109,12 +109,15 @@ public class Basic_Movement : MonoBehaviour
             // Calculate the jump velocity
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             // Reset jump buffer counter
-            jumpBufferCounter = 0;  
+            jumpBufferCounter = 0;
         }
 
         if ((characterController.collisionFlags & CollisionFlags.Above) != 0)
         {
             velocity.y = -2f;
         }
+
+        Debug.Log(isGrounded);
+
     }
 }
