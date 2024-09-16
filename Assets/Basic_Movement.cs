@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class Basic_Movement : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class Basic_Movement : MonoBehaviour
     // Sprint movement speed
     public float sprintSpeed = 20.0f;
     // Gravity value, increased to make falling faster
-    public float gravity = -20f;
+    public float gravity = 0f;
     // Jump height, decreased to reduce airtime
     public float jumpHeight = 5f;
 
@@ -43,8 +44,14 @@ public class Basic_Movement : MonoBehaviour
     // Counter for jump buffer
     private float jumpBufferCounter;
 
+    private void Start()
+    {
+        characterController = GetComponent<CharacterController>();
+    }
+
     void Update()
     {
+
         // Check if the player is grounded by casting a sphere at the groundCheck position
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
@@ -119,5 +126,45 @@ public class Basic_Movement : MonoBehaviour
 
         Debug.Log(isGrounded);
 
+        
+
     }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        // Check if the player is hitting a wall and not grounded
+        if (!characterController.isGrounded && hit.normal.y < 0.1f)
+        {
+            // Visualize wall hit for debugging purposes
+            Debug.DrawRay(hit.point, hit.normal, Color.yellow, 1.25f);
+            Debug.Log("Hit Wall");
+
+            // Stop the player's movement when they touch a wall
+            // Only stop horizontal movement (X and Z)
+            velocity.x = 0;
+            velocity.z = 0;
+
+            // If the player presses the jump key while touching the wall, perform a wall jump
+            if (Input.GetKey(KeyCode.Space))
+            {
+                // Calculate the wall jump direction
+                // This will push the player away from the wall and upwards
+                Vector3 wallJumpDirection = hit.normal + Vector3.up * jumpHeight;
+
+                // Normalize the wall jump direction to ensure it's consistent
+                wallJumpDirection.Normalize();
+
+                // Apply the new velocity based on the wall jump direction
+                // You can adjust the multiplier to control the wall jump force
+                velocity = wallJumpDirection * speed * 1.5f;
+
+                // Stop the player's movement when they touch a wall
+                // Only stop horizontal movement (X and Z)
+                velocity.x = 0;
+                velocity.z = 0;
+
+            }
+        }
+    }
+
 }
