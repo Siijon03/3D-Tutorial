@@ -59,7 +59,7 @@ public class Basic_Movement : MonoBehaviour
     private bool hasWallJumped = false;
 
     private void Start()
-    {
+    { 
         // Get the CharacterController component.
         characterController = GetComponent<CharacterController>();
     }

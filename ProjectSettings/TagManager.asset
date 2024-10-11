@@ -3,12 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - AntiGravityPickup
+  - JumpPickup
+  - SpeedPickup
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - groundCheck
   - Water
   - UI
   - 
