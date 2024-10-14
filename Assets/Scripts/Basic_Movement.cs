@@ -9,7 +9,7 @@ public class Basic_Movement : MonoBehaviour
     public CharacterController characterController;  // Reference to the CharacterController component
 
     // Values needed for movement
-    [Header("Movement")]
+    [Header("Movement Variables")]
     // Normal movement speed.
     public float speed = 12.0f;
     // Sprint movement speed.
@@ -32,10 +32,11 @@ public class Basic_Movement : MonoBehaviour
     // Radius for ground check.
     public float groundDistance = 0.4f; 
     // Layer mask for ground detection.
-    public LayerMask groundMask; 
+    public LayerMask groundMask;
 
     // Used for player to look around.
     // Camera transform to align player movement with camera.
+    [Header("Player Camera Reference")]
     public Transform cameraTransform; 
 
     // Basic Vector3 for movement and boolean to check if the player is touching the ground.
@@ -52,6 +53,7 @@ public class Basic_Movement : MonoBehaviour
     private float jumpBufferTime = 0.2f; // Time window to buffer jump input.
     private float jumpBufferCounter; // Counter for jump buffer.
 
+    [Header("Player HUD Reference")]
     // Reference to HUD Help script to update HUD information.
     public HUD_Help hudTextUpdate;
 
@@ -120,6 +122,11 @@ public class Basic_Movement : MonoBehaviour
             //Decreases to 0 if not moving.
             //Uses the 'sprintAcceleration' variable to adjust the rate of increase/decrease.
             currentSpeed = Mathf.Lerp(currentSpeed, 0, sprintAcceleration * Time.deltaTime);
+        }
+        //In Cast Regular Speed is Somehow Faster than Sprint Speed.
+        else if (speed > maxSprintSpeed)
+        {
+            maxSprintSpeed = speed * 2;
         }
         else
         {

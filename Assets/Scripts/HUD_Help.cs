@@ -4,6 +4,7 @@ using TMPro;
 public class HUD_Help : MonoBehaviour
 {
     [Header("HUD Help")]
+    // Reference HUD Text
     public TextMeshProUGUI speedText; // Text component for displaying speed
     public TextMeshProUGUI currentSprintStatus; // Text component for displaying sprint status
     public TextMeshProUGUI wallJumpCondition; // Text component for displaying wall jump condition
@@ -16,7 +17,7 @@ public class HUD_Help : MonoBehaviour
     public void UpdateSpeedText(float speed)
     {
         // Format speed to 2 decimal places.
-        speedText.text = "Current Speed: " + speed.ToString("F1");
+        speedText.text = "Current Speed: " + speed.ToString("F2");
     }
 
     // Update sprint status.

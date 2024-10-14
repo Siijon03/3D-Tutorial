@@ -9,6 +9,12 @@ public class PowerUpManager : MonoBehaviour
     private bool jumpPickupActive = false;
     private bool antiGravityPickupActive = false;
 
+    [SerializeField]
+    [Header("Power Up Timer")]
+    public float powerUpTimer = 5f;
+
+    [SerializeField]
+    [Header("Script References")]
     // Reference to Basic Movement in Order to Modify our Basic Attributes.
     public Basic_Movement moveRef;
     // Reference to HUD Help script to update HUD information.
@@ -30,7 +36,7 @@ public class PowerUpManager : MonoBehaviour
         if (col.CompareTag("SpeedPickup") && speedPickupActive == false)
         {
             // Start the Timer coroutine for the SpeedPickup power-up
-            StartCoroutine(SpeedPowerUpRoutine(5f, col.gameObject));
+            StartCoroutine(SpeedPowerUpRoutine(powerUpTimer, col.gameObject));
             //Update the Powerup Status on HUD Script.
             currentPowerUp = "Speed Powerup";
             hudTextUpdate.CurrentPowerupText(currentPowerUp);
@@ -53,7 +59,7 @@ public class PowerUpManager : MonoBehaviour
         else if (col.CompareTag("JumpPickup") && jumpPickupActive == false)
         {
             // Implement logic for JumpPickup
-            StartCoroutine(JumpPowerUpRoutine(5f, col.gameObject));
+            StartCoroutine(JumpPowerUpRoutine(powerUpTimer, col.gameObject));
             //Update the Powerup Status on HUD Script.
             currentPowerUp = "Jump Powerup";
             hudTextUpdate.CurrentPowerupText(currentPowerUp);
@@ -74,7 +80,7 @@ public class PowerUpManager : MonoBehaviour
         else if (col.CompareTag("AntiGravityPickup") && antiGravityPickupActive == false)
         {
             // Implement logic for JumpPickup
-            StartCoroutine(AntiGravityRoutine(5f, col.gameObject));
+            StartCoroutine(AntiGravityRoutine(powerUpTimer, col.gameObject));
             //Update the Powerup Status on HUD Script.
             currentPowerUp = "Anti-Gravity Powerup";
             hudTextUpdate.CurrentPowerupText(currentPowerUp);
