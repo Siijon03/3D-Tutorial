@@ -6,12 +6,18 @@ public class PowerUpManager : MonoBehaviour
 
     [SerializeField]
     private bool speedPickupActive = false;
+    [SerializeField]
     private bool jumpPickupActive = false;
+    [SerializeField]
     private bool antiGravityPickupActive = false;
 
     [SerializeField]
     [Header("Power Up Timer")]
     public float powerUpTimer = 5f;
+
+    [Header("Power Up Multiplier")]
+    public float speedMult = 2f;
+    public float jumpMult = 2f;
 
     [SerializeField]
     [Header("Script References")]
@@ -31,7 +37,7 @@ public class PowerUpManager : MonoBehaviour
     // OnTriggerEnter is called when another collider enters the trigger collider attached to the GameObject
     void OnTriggerEnter(Collider col)
     {
-        Debug.Log("Collided with: " + col.gameObject.name + " (Tag: " + col.gameObject.tag + ")");
+        // Debug.Log("Collided with: " + col.gameObject.name + " (Tag: " + col.gameObject.tag + ")");
         // Check if the collided object has the "SpeedPickup" tag
         if (col.CompareTag("SpeedPickup") && speedPickupActive == false)
         {
@@ -46,8 +52,8 @@ public class PowerUpManager : MonoBehaviour
                 //Set the Power Up Flag to True, This is to Prevent Multiple Pickups of the Same Item.
                 speedPickupActive = true;
                 //Get the Speed From Basic Movement.
-                moveRef.SetCurrentSpeed(moveRef.GetCurrentSpeed() * 2);
-                moveRef.SetMaxSprintSpeed(moveRef.GetMaxSprintSpeed() * 2);
+                moveRef.SetCurrentSpeed(moveRef.GetCurrentSpeed() * speedMult);
+                moveRef.SetMaxSprintSpeed(moveRef.GetMaxSprintSpeed() * speedMult);
             }
             else
             {
@@ -68,7 +74,7 @@ public class PowerUpManager : MonoBehaviour
             {
                 //Set the Power Up Flag to True, This is to Prevent Multiple Pickups of the Same Item.
                 jumpPickupActive = true;
-                moveRef.SetCurrentJumpHeight(moveRef.GetCurrentJumpHeight() * 2);
+                moveRef.SetCurrentJumpHeight(moveRef.GetCurrentJumpHeight() * jumpMult);
             }
             else
             {
@@ -116,8 +122,8 @@ public class PowerUpManager : MonoBehaviour
             //Set the Condition Back to False so the Player can pick up the Object Again Without Stacking.
             //Also Inverse the PowerUp Process.
             speedPickupActive = false;
-            moveRef.SetCurrentSpeed(moveRef.GetCurrentSpeed() / 2);
-            moveRef.SetMaxSprintSpeed(moveRef.GetMaxSprintSpeed() / 2);
+            moveRef.SetCurrentSpeed(moveRef.GetCurrentSpeed() / speedMult);
+            moveRef.SetMaxSprintSpeed(moveRef.GetMaxSprintSpeed() / speedMult);
         }
 
         currentPowerUp = "None";
@@ -136,7 +142,7 @@ public class PowerUpManager : MonoBehaviour
         if (jumpPickupActive == true)
         {
             jumpPickupActive = false;
-            moveRef.SetCurrentJumpHeight(moveRef.GetCurrentJumpHeight() / 2);
+            moveRef.SetCurrentJumpHeight(moveRef.GetCurrentJumpHeight() / jumpMult);
         }
 
         currentPowerUp = "None";
