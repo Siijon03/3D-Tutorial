@@ -252,10 +252,13 @@ public class Basic_Movement : MonoBehaviour
                 hasWallJumped = false;
             }
         }
+
+
         else
         {
             // Reset wall jump condition if player is not touching a wall.
             hasWallJumped = false;
         }
+
     }
 }

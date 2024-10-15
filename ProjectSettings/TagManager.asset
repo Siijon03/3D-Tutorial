@@ -7,6 +7,7 @@ TagManager:
   - AntiGravityPickup
   - JumpPickup
   - SpeedPickup
+  - MovingPlatform
   layers:
   - Default
   - TransparentFX
