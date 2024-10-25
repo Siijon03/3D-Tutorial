@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class RotatingObject : MonoBehaviour
 {
-    // Reference Game Object
+    // Reference Game Objects
     [Header("Script Reference")]
     public GameObject rotObject;
 

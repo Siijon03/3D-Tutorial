@@ -136,7 +136,7 @@ public class PowerUpManager : MonoBehaviour
     {
         go.SetActive(false);
 
-        Debug.Log("Move Faster!");
+        Debug.Log("Jump Higher!");
         yield return new WaitForSeconds(powerUpDuration);
 
         if (jumpPickupActive == true)
@@ -155,7 +155,7 @@ public class PowerUpManager : MonoBehaviour
     {
         go.SetActive(false);
 
-        Debug.Log("Move Faster!");
+        Debug.Log("Floaty...!");
         yield return new WaitForSeconds(powerUpDuration);
 
         if (antiGravityPickupActive == true)
