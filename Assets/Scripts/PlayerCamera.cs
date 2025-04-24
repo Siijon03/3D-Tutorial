@@ -17,6 +17,23 @@ public class PlayerCamera : MonoBehaviour
     //Rotation by Y
     float yRotation;
 
+    public float GetCameraRotx()
+    {
+        return xRotation;
+    }
+
+    public float GetCameraRoty()
+    {
+        return yRotation;
+    }
+
+    // Getter for the camera's forward direction
+    public Vector3 CameraForward
+    {
+        get { return transform.forward; }
+    }
+
+
     private void Start()
     {
         //Makes it so Cursor cannot move indepentantly of movement.
