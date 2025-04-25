@@ -12,7 +12,7 @@ public class R2P_Glow : MonoBehaviour
     private Material mat;
     private float lerpTime;
 
-    Color purple = new Color(0.192f, 0.106f, 0.573f); // Cyan
+    Color myPurple = new Color(0.192f, 0.106f, 0.573f); // Cyan
 
     void Start()
     {
@@ -39,7 +39,7 @@ public class R2P_Glow : MonoBehaviour
         // Lerp back and forth between red and purple
         lerpTime += Time.deltaTime * colorSpeed;
         float t = Mathf.PingPong(lerpTime, 1f);
-        Color baseColor = Color.Lerp(Color.red, purple, t);
+        Color baseColor = Color.Lerp(Color.red, myPurple, t);
 
         // Pulse with transparency
         float alpha = Mathf.Lerp(minAlpha, maxAlpha, (Mathf.Sin(Time.time * pulseSpeed) + 1f) / 2f);
