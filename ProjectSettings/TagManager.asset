@@ -8,6 +8,7 @@ TagManager:
   - JumpPickup
   - SpeedPickup
   - MovingPlatform
+  - Interactable
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - groundCheck
   - Water
   - UI
-  - 
+  - Interactable
   - 
   - 
   - 

@@ -30,6 +30,7 @@ public class PlayerCamera : MonoBehaviour
     // Getter for the camera's forward direction
     public Vector3 CameraForward
     {
+        // Return Information from the Camera's Forward Direction.
         get { return transform.forward; }
     }
 

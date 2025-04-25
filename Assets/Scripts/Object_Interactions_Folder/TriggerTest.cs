@@ -6,7 +6,6 @@ public class TriggerTest : MonoBehaviour, IInteractable
 {
     public void Interact()
     {
-        Debug.Log("Interacted!");
         Debug.Log(Random.Range(0, 100));
     }
 
@@ -15,7 +14,7 @@ public class TriggerTest : MonoBehaviour, IInteractable
     {
         if (col.CompareTag("Player"))
         {
-            
+
         }
     }
 }

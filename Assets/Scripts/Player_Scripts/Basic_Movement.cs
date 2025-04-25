@@ -172,7 +172,7 @@ public class Basic_Movement : MonoBehaviour
         hudTextUpdate.CurrentSprintStatusText(isSprinting);
 
         // Debug log to check if player is grounded.
-        Debug.Log(isGrounded); 
+        // Debug.Log(isGrounded); 
     }
 
     //Use of Getter and Setters that Will Be Used for Reference in Another Script
