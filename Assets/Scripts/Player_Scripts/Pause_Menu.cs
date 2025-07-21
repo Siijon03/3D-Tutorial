@@ -6,6 +6,7 @@ public class Pause_Menu : MonoBehaviour
 {
     public static bool isPaused;
     public GameObject pauseUI;
+    public GameObject hideTargetReticle;
 
     private void Start()
     {
@@ -32,6 +33,7 @@ public class Pause_Menu : MonoBehaviour
     void ResumeGame()
     {
         pauseUI.SetActive(false);
+        hideTargetReticle.SetActive(true);
         Time.timeScale = 1.0f;
         isPaused = false;
 
@@ -40,6 +42,7 @@ public class Pause_Menu : MonoBehaviour
     void PauseGame()
     {
         pauseUI.SetActive(true);
+        hideTargetReticle.SetActive(false);
         Time.timeScale = 0f;
         isPaused = true;
         //Makes it so Cursor cannot move indepentantly of movement.
@@ -51,6 +54,7 @@ public class Pause_Menu : MonoBehaviour
     public void ResumeButton()
     {
         pauseUI.SetActive(false);
+        hideTargetReticle.SetActive(true);
         Time.timeScale = 1.0f;
         isPaused = false;
         //Makes it so Cursor cannot move indepentantly of movement.

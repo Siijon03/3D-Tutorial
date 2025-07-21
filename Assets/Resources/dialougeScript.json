@@ -1,0 +1,25 @@
+{
+    "npcs": {
+      "npc1": {
+        "greeting": "Hello, I'm Number 1!",
+        "responses": {
+          "How are you?": {
+            "Good": "I'm glad to hear that!",
+            "Okay": "Hope things get better.",
+            "Bad": "Oh no, that's terrible!"
+          }
+        }
+      },
+      "npc2": {
+        "greeting": "Hello, I'm Number 2!",
+        "responses": {
+          "How are you?": {
+            "Good": "Cool.",
+            "Okay": "Alright.",
+            "Bad": "Tough luck."
+          }
+        }
+      }
+    }
+  }
+  

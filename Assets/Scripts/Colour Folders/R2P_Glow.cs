@@ -12,7 +12,7 @@ public class R2P_Glow : MonoBehaviour
     private Material mat;
     private float lerpTime;
 
-    Color myPurple = new Color(0.192f, 0.106f, 0.573f); // Cyan
+    public Color myPurple = new Color(0.192f, 0.106f, 0.573f); // Cyan
 
     void Start()
     {

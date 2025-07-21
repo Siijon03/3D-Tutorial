@@ -6,14 +6,16 @@ public class G2B_Glow : MonoBehaviour
 {
     private float colorSpeed = 0.25f;     // Speed of color transition
     private float pulseSpeed = 0.75f;     // Speed of pulse (transparency/brightness)
+    [SerializeField] 
     private float minAlpha = 0.95f;
+    [SerializeField]
     private float maxAlpha = 1.0f;
 
     private Material mat;
     private float lerpTime;
 
-    Color myGreen = new Color(0.047f, 0.937f, 0.118f); // #0cef1e
-    Color myBlue = new Color(0.063f, 0.243f, 0.969f); // #103ef7
+    public Color myGreen = new Color(0.047f, 0.937f, 0.118f); // #0cef1e
+    public Color myBlue = new Color(0.063f, 0.243f, 0.969f); // #103ef7
 
     void Start()
     {
