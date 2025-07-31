@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 3679877103072371327}
   - component: {fileID: 5346792029758403318}
   - component: {fileID: 8856472309267770524}
-  m_Layer: 0
+  - component: {fileID: 4366413209014294058}
+  m_Layer: 8
   m_Name: Jump_Sphere
   m_TagString: JumpPickup
   m_Icon: {fileID: 0}
@@ -59,6 +60,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -105,3 +109,19 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.55
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4366413209014294058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5014873690668465084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83e48790bb0175442afc1b1b3a665802, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minAlpha: 1
+  maxAlpha: 1
+  myGreen: {r: 1, g: 0.937, b: 0.118, a: 1}
+  myBlue: {r: 0.96862745, g: 0.6265639, b: 0.06274509, a: 1}

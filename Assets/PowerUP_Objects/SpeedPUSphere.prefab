@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 3554370723235626884}
   - component: {fileID: 1026259042210237261}
   - component: {fileID: 8560296451840210118}
-  m_Layer: 0
+  - component: {fileID: 4312103848960611356}
+  - component: {fileID: 5834226302861085530}
+  m_Layer: 8
   m_Name: SpeedPUSphere
   m_TagString: SpeedPickup
   m_Icon: {fileID: 0}
@@ -59,6 +61,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -105,3 +110,35 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.55
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4312103848960611356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3733001539083408652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1653bd0ae24b9df47aac68fba0cfea03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotObject: {fileID: 3733001539083408652}
+  rotatationSpeedX: 250
+  rotationSpeedY: 1
+  rotationSpeedZ: 1
+--- !u!114 &5834226302861085530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3733001539083408652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83e48790bb0175442afc1b1b3a665802, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minAlpha: 1
+  maxAlpha: 1
+  myGreen: {r: 0.21152662, g: 0, b: 0.8784314, a: 1}
+  myBlue: {r: 0.063, g: 0.243, b: 0.969, a: 1}

@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 7898052917686318757}
   - component: {fileID: 6262216553746668913}
   - component: {fileID: 6459416306543311463}
-  m_Layer: 0
+  - component: {fileID: 3870641860134597855}
+  - component: {fileID: 9155008061759962444}
+  m_Layer: 8
   m_Name: AntGravPUSphere
   m_TagString: AntiGravityPickup
   m_Icon: {fileID: 0}
@@ -59,6 +61,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -105,3 +110,35 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.55
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3870641860134597855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8416992815451173271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1653bd0ae24b9df47aac68fba0cfea03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotObject: {fileID: 8416992815451173271}
+  rotatationSpeedX: 250
+  rotationSpeedY: 1
+  rotationSpeedZ: 1
+--- !u!114 &9155008061759962444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8416992815451173271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83e48790bb0175442afc1b1b3a665802, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minAlpha: 1
+  maxAlpha: 1
+  myGreen: {r: 1, g: 0, b: 0, a: 1}
+  myBlue: {r: 0.96862745, g: 0.06274509, b: 0.44787312, a: 1}

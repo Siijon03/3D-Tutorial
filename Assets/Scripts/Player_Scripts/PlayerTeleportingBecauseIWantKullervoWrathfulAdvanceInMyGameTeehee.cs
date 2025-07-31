@@ -7,7 +7,6 @@ public class PlayerTeleportingBecauseIWantKullervoWrathfulAdvanceInMyGameTeehee 
 
     [Header("Raycast Settings")]
     public float raycastRange = 100f;
-    public bool showDebugRay = true;
 
     [Header("Script References")]
     public Transform player;         
@@ -48,10 +47,6 @@ public class PlayerTeleportingBecauseIWantKullervoWrathfulAdvanceInMyGameTeehee 
         Ray ray = new Ray(transform.position, transform.forward);
         // Set up a Raycast 'Hit' Variable
         RaycastHit hit;
-
-        // Ineffective Debugging
-        if (showDebugRay)
-            Debug.DrawRay(ray.origin, ray.direction * raycastRange, Color.red, 2f);
 
         // Raycast Parameters, Use the 'Range' to Control Teleporting Distance
         if (Physics.Raycast(ray, out hit, raycastRange))

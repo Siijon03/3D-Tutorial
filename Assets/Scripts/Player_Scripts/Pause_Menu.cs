@@ -45,7 +45,7 @@ public class Pause_Menu : MonoBehaviour
         hideTargetReticle.SetActive(false);
         Time.timeScale = 0f;
         isPaused = true;
-        //Makes it so Cursor cannot move indepentantly of movement.
+        //Makes it so Cursor is Active to Select Options.
         Cursor.lockState = CursorLockMode.None;
         //Cursor cannot be seen.  
         Cursor.visible = true;
