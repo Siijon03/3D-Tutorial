@@ -28,7 +28,6 @@ public class InteractionTester : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton1))
         {
             Ray r = new Ray(camRef.transform.position, camRef.CameraForward);
-            Debug.DrawLine(camRef.transform.position, camRef.transform.position + camRef.CameraForward * InteractRange, Color.red, 5f);
 
             if (Physics.Raycast(r, out RaycastHit hitInfo, InteractRange, interactableLayer))
             {

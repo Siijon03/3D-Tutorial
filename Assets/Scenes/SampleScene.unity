@@ -993,6 +993,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 132a9384e4b70a443b88b97ec709c798, type: 3}
+--- !u!1 &1947585567 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2767724585277567360, guid: 98571a70716c4b146b991798bc690374, type: 3}
+  m_PrefabInstance: {fileID: 4665092095631190755}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2044517156
 GameObject:
   m_ObjectHideFlags: 0
@@ -1816,6 +1821,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1319388291}
     - target: {fileID: 727021474728945747, guid: 0741f1e14d65450429644b78802b6039, type: 3}
+      propertyPath: dialougePanel
+      value: 
+      objectReference: {fileID: 1947585567}
+    - target: {fileID: 727021474728945747, guid: 0741f1e14d65450429644b78802b6039, type: 3}
       propertyPath: hideTargetReticle
       value: 
       objectReference: {fileID: 1215197190}
@@ -1859,6 +1868,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7323107121623658501, guid: 0741f1e14d65450429644b78802b6039, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TryEndInteraction
+      objectReference: {fileID: 0}
     - target: {fileID: 8822871512386644715, guid: 0741f1e14d65450429644b78802b6039, type: 3}
       propertyPath: m_Name
       value: Perpticual Rotating Cube
@@ -1867,7 +1880,8 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 963194232}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1460248833366613896, guid: 0741f1e14d65450429644b78802b6039, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
