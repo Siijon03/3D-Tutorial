@@ -123,5 +123,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minAlpha: 1
   maxAlpha: 1
-  myGreen: {r: 1, g: 0.937, b: 0.118, a: 1}
-  myBlue: {r: 0.96862745, g: 0.6265639, b: 0.06274509, a: 1}
+  myColour1: {r: 0.9372549, g: 0.9264372, b: 0.047058843, a: 1}
+  myColour2: {r: 0.9372549, g: 0.70282507, b: 0.050980378, a: 1}
